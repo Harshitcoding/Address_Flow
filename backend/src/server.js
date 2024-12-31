@@ -3,15 +3,15 @@ const bodyParser = require("body-parser");
 const { PrismaClient } = require("@prisma/client");
 const cors = require("cors");
 const prisma = new PrismaClient();
+
 const App = express();
 
 // Middleware
 App.use(bodyParser.json());
-App.use(
-  cors({
-    origin: "http://localhost:3001",
-  })
-);
+
+App.use(cors());
+App.use(express.json());
+
 
 // Root route
 App.get("/", (req, res) => {
@@ -56,7 +56,7 @@ App.get("/addresses", async (req, res) => {
 });
 
 // Start the server
-const PORT = 3000;
+const PORT = 'https://address-flow.vercel.app';
 App.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

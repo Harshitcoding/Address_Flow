@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import BackendUrl from "../config";
 
 const AddressForm = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ const AddressForm = () => {
   const fetchAddresses = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3000/addresses");
+      const response = await fetch(`${BackendUrl}/addresses`);
       if (!response.ok) throw new Error("Failed to fetch addresses");
       const data = await response.json();
       setAddresses(data);
@@ -41,7 +42,7 @@ const AddressForm = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/addresses", {
+      const response = await fetch(`${BackendUrl}/addresses`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
