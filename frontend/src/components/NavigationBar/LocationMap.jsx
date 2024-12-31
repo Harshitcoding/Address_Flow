@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { MapPin, Search, X } from 'lucide-react';
-import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const LocationMap = ({ 
